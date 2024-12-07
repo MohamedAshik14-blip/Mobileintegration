@@ -6,9 +6,13 @@ import androidx.activity.compose.setContent
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.petapp.ui.PetListScreen
 import com.example.petapp.ui.theme.PetAppTheme
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        //splash
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         setContent {
             PetAppTheme {
