@@ -8,7 +8,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.navigation.NavController
-
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Card
@@ -18,6 +17,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.rememberImagePainter
 
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.material3.Button
 
 
 
@@ -51,5 +54,56 @@ fun PetCard(pet: Pet, navController: NavController) {
                     .height(200.dp),
                 contentScale = ContentScale.Crop
             )
-        }}
+            Spacer(modifier = Modifier.height(12.dp))
+
+
+            Text(
+                text = pet.name,
+                style = MaterialTheme.typography.titleLarge,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))//spacer
+
+
+            Text(
+                text = "Calories Burned: ${pet.caloriesBurned}",
+                style = MaterialTheme.typography.bodyMedium,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+
+
+
+            ///show more details when card is expanded
+            if (isExpanded.value) {
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text(
+                    text = "Latitude: ${pet.latitude}",
+                    style = MaterialTheme.typography.bodySmall,
+                    textAlign = TextAlign.Center
+                )
+                Text(
+                    text = "Longitude: ${pet.longitude}",
+                    style = MaterialTheme.typography.bodySmall,
+                    textAlign = TextAlign.Center
+                )
+
+
+                Spacer(modifier = Modifier.height(8.dp))
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+
+                        navController.navigate("pet_tracking/${pet.latitude},${pet.longitude}")
+                    }
+                ) {
+                    Text("Track Pet")
+                }
+            }
+        }
+    }
 }
