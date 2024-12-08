@@ -57,3 +57,36 @@ fun LoginScreen(navController: NavController) {
                 onNext = {  }
             )
         )
+         Spacer(modifier = Modifier.height(16.dp))
+
+
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Password") },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp),
+            singleLine = true,
+            isError = errorMessage.isNotEmpty(),
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions.Default.copy(
+                imeAction = ImeAction.Done
+            ),
+            keyboardActions = KeyboardActions(
+                onDone = { }
+            )
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+
+        if (errorMessage.isNotEmpty()) {
+            Text(
+                text = errorMessage,
+                color = Color.Red,
+                style = MaterialTheme.typography.bodySmall
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
