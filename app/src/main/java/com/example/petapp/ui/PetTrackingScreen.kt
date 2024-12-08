@@ -48,4 +48,12 @@ fun PetTrackingScreen(latitude: Float, longitude: Float, navController: NavContr
                 }
             }
         )
-
+ Box(modifier = Modifier.weight(1f)) {
+            AndroidView(
+                factory = { mapView },
+                modifier = Modifier.fillMaxSize(),
+                update = {
+                    mapView.getMapAsync(callback)
+                }
+            )
+        }
