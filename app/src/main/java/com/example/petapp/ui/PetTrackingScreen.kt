@@ -36,3 +36,16 @@ fun PetTrackingScreen(latitude: Float, longitude: Float, navController: NavContr
         googleMap.addMarker(MarkerOptions().position(petLocation).title("Pet Location"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(petLocation, 15f))
     }
+     val mapView = rememberMapViewWithLifecycle(context)
+
+    Column(modifier = Modifier.fillMaxSize()) {
+
+        TopAppBar(
+            title = { Text("Track Pet") },
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
+            }
+        )
+
