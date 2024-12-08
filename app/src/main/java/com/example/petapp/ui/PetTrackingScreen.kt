@@ -68,3 +68,18 @@ fun PetTrackingScreen(latitude: Float, longitude: Float, navController: NavContr
         }
     }
 }
+
+@Composable
+fun rememberMapViewWithLifecycle(context: Context): MapView {
+    val mapView = remember { MapView(context) }
+
+
+    DisposableEffect(context) {
+        mapView.onCreate(Bundle())
+        onDispose {
+            mapView.onDestroy()
+        }
+    }
+
+    return mapView
+}
