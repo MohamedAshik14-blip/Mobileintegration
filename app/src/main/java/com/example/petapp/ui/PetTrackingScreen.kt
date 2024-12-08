@@ -57,3 +57,14 @@ fun PetTrackingScreen(latitude: Float, longitude: Float, navController: NavContr
                 }
             )
         }
+  Spacer(modifier = Modifier.height(8.dp))
+
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = { navController.popBackStack() }
+        ) {
+            Text("Back to Pet List")
+        }
+    }
+}
