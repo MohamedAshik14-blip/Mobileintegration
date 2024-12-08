@@ -89,4 +89,29 @@ fun LoginScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.height(8.dp))
         }
+         Button(
+            onClick = {
+                if (username.text == "Ashik" && password.text == "Ashik@1114") {
+                    navController.navigate("pet_list")
+                } else {
+                    errorMessage = "Invalid credentials, please try again."
+                }
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .height(50.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+        ) {
+            Text(
+                text = "Login",
+                style = MaterialTheme.typography.bodyLarge.copy(color = Color.White)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+
+    }
+}
 
