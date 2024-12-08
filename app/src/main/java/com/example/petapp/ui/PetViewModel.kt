@@ -26,9 +26,11 @@ class PetViewModel : ViewModel() {
     private fun fetchPets() {
         viewModelScope.launch {
             try {
-                _pets.value = petApiService.getPets()
+                val petsFromApi = petApiService.getPets()
+                _pets.value = petsFromApi
+                Log.d("PetViewModel", "Successfully fetched pets: ${petsFromApi.size}")
             } catch (e: Exception) {
-                e.printStackTrace()
+                Log.e("PetViewModel", "Error fetching pets", e)
             }
         }
     }
