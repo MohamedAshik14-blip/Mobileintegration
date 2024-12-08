@@ -3,24 +3,34 @@ package com.example.petapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.petapp.model.Pet
-import com.example.petapp.ui.PetListScreen
-import com.example.petapp.ui.theme.PetAppTheme
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-
-import androidx.compose.ui.tooling.preview.Preview
-
+import androidx.compose.runtime.collectAsState
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.petapp.ui.LoginScreen
+import com.example.petapp.ui.PetListScreen
+import com.example.petapp.ui.PetTrackingScreen
+import com.example.petapp.ui.theme.PetAppTheme
+import com.example.petapp.ui.PetViewModel
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        //splash
-        installSplashScreen()
         super.onCreate(savedInstanceState)
+
         setContent {
+            val petViewModel: PetViewModel = viewModel()
+
             PetAppTheme {
-                PetListScreen()
+                AppNavigation(petViewModel)
             }
         }
     }
