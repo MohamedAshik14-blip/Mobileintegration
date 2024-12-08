@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
 }
 
 android {
@@ -41,9 +42,6 @@ android {
 
 dependencies {
 
-    //splashscreen dependancy
-    implementation(libs.androidx.core.splashscreen)
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -54,6 +52,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences.core.jvm)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,19 +72,69 @@ dependencies {
     implementation ("androidx.room:room-runtime:2.5.1")
     implementation ("androidx.room:room-ktx:2.5.1")
     implementation ("androidx.compose.material3:material3:1.1.0")
-    implementation ("androidx.compose.ui:ui:1.5.0" )// Jetpack Compose UI
-    implementation ("androidx.compose.material3:material3:1.0.1") // Material 3
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0") // ViewModel
-    implementation ("io.coil-kt:coil-compose:2.4.0") // Coil for image loading
-    implementation ("androidx.compose.foundation:foundation:1.5.0" )// Foundation (for LazyColumn, etc.)
-    implementation ("androidx.compose.material:material:1.5.0" )// Material Components
-    implementation ("androidx.activity:activity-compose:1.6.0") // For using Compose in Activity
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0") // for ViewModel
+    implementation ("androidx.compose.ui:ui:1.5.0" )
+    implementation ("androidx.compose.material3:material3:1.0.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
+    implementation ("io.coil-kt:coil-compose:2.4.0")
+    implementation ("androidx.compose.foundation:foundation:1.5.0" )
+    implementation ("androidx.compose.material:material:1.5.0" )
+    implementation ("androidx.activity:activity-compose:1.6.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.0")
-    implementation ("androidx.compose.ui:ui:1.3.0") // for Jetpack Compose
-    implementation ("androidx.compose.material3:material3:1.0.0") // for Material UI
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0") // Retrofit
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0") // Gson Converter for Retrofit
-    implementation ("io.coil-kt:coil-compose:2.1.0") // Coil for image loading
+    implementation ("androidx.compose.ui:ui:1.3.0")
+    implementation ("androidx.compose.material3:material3:1.0.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("io.coil-kt:coil-compose:2.1.0")
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation ("androidx.room:room-runtime:2.5.0")
+    annotationProcessor ("androidx.room:room-compiler:2.5.0")
+
+
+    kapt ("androidx.room:room-compiler:2.5.0")
+
+
+    implementation ("androidx.room:room-ktx:2.5.0")
+    implementation ("androidx.room:room-runtime:2.5.0")
+    kapt ("androidx.room:room-compiler:2.5.0")
+
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
+    implementation ("androidx.room:room-runtime:2.5.1")
+    implementation ("androidx.room:room-ktx:2.5.1")
+    kapt ("androidx.room:room-compiler:2.5.1")
+
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation ("com.google.android.gms:play-services-maps:18.0.0")
+    implementation ("com.google.android.gms:play-services-location:18.0.0")
+    implementation ("androidx.activity:activity-compose:1.6.1")
+    implementation ("com.google.android.gms:play-services-maps:18.0.2")
+    implementation ("com.google.android.gms:play-services-location:18.0.0")
+    implementation ("androidx.compose.material3:material3:1.1.0")
+    implementation ("androidx.navigation:navigation-compose:2.6.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0")
+    implementation ("androidx.compose.ui:ui:1.x.x")
+    implementation ("com.squareup.moshi:moshi:1.15.0") 
+    implementation ("com.squareup.moshi:moshi-kotlin:1.15.0")
+    implementation ("com.google.android.gms:play-services-maps:17.0.1")
+
+    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+
 
 }
