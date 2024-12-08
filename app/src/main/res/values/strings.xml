@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">petApp</string>
+    <string name="google_maps_key">AIzaSyC2epvIUAYu-jCkzd88k4_WPV8C28NZvBI</string>
+
 </resources>
