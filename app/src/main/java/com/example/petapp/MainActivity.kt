@@ -38,14 +38,30 @@ class MainActivity : ComponentActivity() {
 
 
 
-@Preview(showBackground = true)
 @Composable
-fun PetListScreenPreview() {
-    PetAppTheme {
-        PetListScreen(pets = listOf(
-            Pet("Buddy", "https://www.dogstrust.ie/images/800x600/assets/2022-08/sophia_sbt_puppy_leeds_dogstrust.jpg", 200, 52.5, 13.4),
-            Pet("Luna", "https://i.natgeofe.com/n/4f5aaece-3300-41a4-b2a8-ed2708a0a27c/domestic-dog_thumb_square.jpg", 150, 52.6, 13.5)
-        ))
+fun AppNavigation(petViewModel: PetViewModel) {
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "login") {
+        composable("login") {
+            LoginScreen(navController = navController)
+        }
+        composable("pet_list") {
+            PetListScreen(petViewModel = petViewModel, navController = navController)
+        }
+        composable(
+            route = "pet_tracking/{latitude},{longitude}",
+            arguments = listOf(
+                navArgument("latitude") { type = NavType.FloatType },
+                navArgument("longitude") { type = NavType.FloatType }
+            )
+        ) { backStackEntry ->
+            val latitude = backStackEntry.arguments?.getFloat("latitude") ?: 0f
+            val longitude = backStackEntry.arguments?.getFloat("longitude") ?: 0f
+
+
+            PetTrackingScreen(latitude = latitude, longitude = longitude, navController = navController)
+        }
     }
 }
 
